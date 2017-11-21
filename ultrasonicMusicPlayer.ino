@@ -25,13 +25,14 @@ void setup() {
 
 void loop() {
   dist();
-  if (distance < 10) {
-    MP3player.playTrack(6);   
+  if (distance < 30) {
+    MP3player.playTrack(random(6));   
     Serial.println("Let's Play the Music!!!");
   } else {
-    MP3player.playTrack(0);
+    MP3player.stopTrack();
     Serial.println("Stop the Music!!");
   }
+  delay(500);
 }
 
 void dist() {
@@ -45,5 +46,5 @@ void dist() {
   distance = ((float)(340 * duration) / 10000) / 2;  
   
   Serial.print(distance);
-  Serial.println("cm, ");
+  Serial.print("cm, ");
 }
