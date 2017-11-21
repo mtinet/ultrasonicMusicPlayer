@@ -26,7 +26,7 @@ void setup() {
 
 void loop() {
   dist();
-  if (distance < 10) {
+  if (distance < 30) {
     num = random(10);
     Serial.print("Number of Music : "); 
     Serial.println(num);
