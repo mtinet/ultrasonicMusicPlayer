@@ -10,6 +10,7 @@ SFEMP3Shield MP3player;
 int echoPin = 4;
 int trigPin = 5;
 float duration, distance;
+int num = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -25,8 +26,11 @@ void setup() {
 
 void loop() {
   dist();
-  if (distance < 30) {
-    MP3player.playTrack(random(6));   
+  if (distance < 10) {
+    num = random(10);
+    Serial.print("Number of Music : "); 
+    Serial.println(num);
+    MP3player.playTrack(num);   
     Serial.println("Let's Play the Music!!!");
   } else {
     MP3player.stopTrack();
@@ -44,7 +48,8 @@ void dist() {
   duration = pulseIn(echoPin, HIGH); 
   // HIGH 였을 때 시간(초음파가 보냈다가 다시 들어온 시간)을 가지고 거리를 계산 한다.
   distance = ((float)(340 * duration) / 10000) / 2;  
-  
+
+  Serial.print("Distance from Sensor to Person : ");
   Serial.print(distance);
-  Serial.print("cm, ");
+  Serial.println("cm");
 }
